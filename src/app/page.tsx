@@ -7,11 +7,10 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Check, Flame, ShieldCheck } from 'lucide-react';
 import { Ticker } from '@/components/landing/Ticker';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export default function Home() {
   const expertHero = "https://i.postimg.cc/BvVhhckR/000000.png";
-  const bioImage = PlaceHolderImages.find(img => img.id === 'bio-personal');
+  const bioImage = "https://i.postimg.cc/9fGWjbHQ/Chat-GPT-Image-17-de-jun-de-2026-11-36-30.png";
   
   const resultImage = "https://img.daquidali.com.br/2026/antes-e-depois-academia-2.jpg";
   const resultItems = Array(6).fill(resultImage);
@@ -156,7 +155,7 @@ export default function Home() {
               <div key={i} className="flex-shrink-0 w-[300px] md:w-[400px] aspect-[3/4] relative card-premium p-0 overflow-hidden border-primary/20 hover:border-primary/60 transition-all duration-500 shadow-2xl rounded-2xl">
                 <Image 
                   src={imgUrl} 
-                  alt={`Resultado ${i + 1}`} 
+                  alt="Resultado de Aluno" 
                   fill 
                   className="object-cover transition-transform duration-700 hover:scale-105"
                 />
@@ -269,14 +268,14 @@ export default function Home() {
           </div>
           <div className="relative group">
             <div className="absolute -inset-4 bg-gradient-to-tr from-secondary/40 to-primary/20 blur-3xl rounded-full opacity-30 group-hover:opacity-50 transition-opacity"></div>
-            <div className="relative rounded-2xl overflow-hidden aspect-[4/5] border border-white/10 shadow-2xl">
+            <div className="relative rounded-2xl overflow-hidden aspect-[4/5] border border-white/10 shadow-2xl bg-black">
               <Image 
-                src={bioImage?.imageUrl || ""} 
-                alt="Robert Kirchmair" 
+                src={bioImage} 
+                alt="Robert Kirchmair Profissional" 
                 fill 
-                className="object-cover grayscale"
+                className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#741b1b]/60 to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
             </div>
           </div>
         </div>
