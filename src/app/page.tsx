@@ -17,18 +17,22 @@ export default function Home() {
   return (
     <main className="min-h-screen relative overflow-x-hidden w-full box-border bg-black">
       {/* 1. HERO SECTION - PRETO SÓLIDO #000000 */}
-      <section className="relative min-h-[90vh] lg:min-h-screen flex items-center px-6 md:px-12 overflow-hidden w-full bg-[#000000]">
-        <div className="container mx-auto relative z-10">
-          <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-12 items-center">
+      <section className="relative min-h-[90vh] lg:min-h-screen flex items-center px-6 md:px-12 overflow-visible w-full bg-[#000000]">
+        <div className="container mx-auto relative z-10 overflow-visible">
+          <div className="grid lg:grid-cols-[1.12fr_0.88fr] gap-12 items-center overflow-visible">
             {/* TEXT CONTENT */}
-            <div className="space-y-6 animate-in fade-in slide-in-from-left-8 duration-1000 max-w-[780px] order-2 lg:order-1">
+            <div className="space-y-6 animate-in fade-in slide-in-from-left-8 duration-1000 max-w-[800px] order-2 lg:order-1 overflow-visible">
               <Badge variant="outline" className="border-primary text-primary font-headline px-4 py-1 tracking-widest text-xs uppercase animate-pulse">
                 Consultoria Premium Robert Kirchmair
               </Badge>
               
               <h1 className="hero-title">
-                TRANSFORME SEU <span className="premium-gradient-text">CORPO</span> <br className="hidden md:block" />
-                COM <span className="premium-gradient-text">ESTRATÉGIA</span>
+                <span className="hero-title-line">
+                  TRANSFORME SEU <span className="premium-gradient-text">CORPO</span>
+                </span>
+                <span className="hero-title-line">
+                  COM <span className="premium-gradient-text">ESTRATÉGIA</span>
+                </span>
               </h1>
 
               <p className="hero-subtitle">
@@ -51,7 +55,7 @@ export default function Home() {
             </div>
 
             {/* EXPERT IMAGE - POSICIONADA À DIREITA */}
-            <div className="relative order-1 lg:order-2 flex justify-center lg:justify-end">
+            <div className="relative order-1 lg:order-2 flex justify-center lg:justify-end overflow-visible">
               <div className="relative w-full max-w-[450px] lg:max-w-none lg:w-[110%] h-[350px] md:h-[500px] lg:h-[85vh] transition-transform duration-700 hover:scale-[1.01]">
                 <Image 
                   src={expertHero} 

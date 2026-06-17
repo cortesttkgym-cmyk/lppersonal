@@ -39,14 +39,40 @@
 }
 
 .hero-title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
   font-size: clamp(2.5rem, 3.8vw, 4.4rem);
   line-height: 0.95;
-  max-width: 780px;
   white-space: normal;
   word-break: normal;
   overflow-wrap: normal;
   hyphens: none;
+  max-width: none;
+  width: max-content;
+  overflow: visible !important;
+  padding-right: 0.15em; /* Compensação crucial para fonte itálica não cortar */
   @apply uppercase italic font-bold tracking-tighter;
+}
+
+.hero-title-line {
+  display: block;
+  white-space: nowrap;
+  overflow: visible !important;
+  padding-right: 0.15em;
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    width: 100%;
+    max-width: 100%;
+    font-size: clamp(2.2rem, 9vw, 3.4rem);
+    padding-right: 0.1em;
+  }
+  .hero-title-line {
+    white-space: normal;
+  }
 }
 
 .hero-subtitle {
