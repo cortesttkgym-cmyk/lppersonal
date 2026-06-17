@@ -31,6 +31,24 @@
       "imageHint": "weight loss transformation"
     },
     {
+      "id": "result-4",
+      "description": "Fitness transformation 4",
+      "imageUrl": "https://picsum.photos/seed/trans4/400/600",
+      "imageHint": "muscle gain"
+    },
+    {
+      "id": "result-5",
+      "description": "Fitness transformation 5",
+      "imageUrl": "https://picsum.photos/seed/trans5/400/600",
+      "imageHint": "athlete transformation"
+    },
+    {
+      "id": "result-6",
+      "description": "Fitness transformation 6",
+      "imageUrl": "https://picsum.photos/seed/trans6/400/600",
+      "imageHint": "body recomposition"
+    },
+    {
       "id": "bio-personal",
       "description": "Robert Kirchmair presenting his expertise",
       "imageUrl": "https://picsum.photos/seed/expert/800/1000",

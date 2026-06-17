@@ -1,22 +1,30 @@
+
+'use client';
+
 import React from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Check, Flame, ArrowRight, ShieldCheck, Trophy, Target, Star, Play } from 'lucide-react';
+import { Check, Flame, ShieldCheck } from 'lucide-react';
 import { Ticker } from '@/components/landing/Ticker';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import Autoplay from 'embla-carousel-autoplay';
 
 export default function Home() {
   const heroImage = PlaceHolderImages.find(img => img.id === 'hero-personal');
   const bioImage = PlaceHolderImages.find(img => img.id === 'bio-personal');
-  const results = ['result-1', 'result-2', 'result-3'].map(id => PlaceHolderImages.find(img => img.id === id));
+  const results = ['result-1', 'result-2', 'result-3', 'result-4', 'result-5', 'result-6'].map(id => PlaceHolderImages.find(img => img.id === id));
+
+  const autoplayPlugin = React.useRef(
+    Autoplay({ delay: 3000, stopOnInteraction: true })
+  );
 
   return (
-    <main className="min-h-screen relative overflow-x-hidden">
-      {/* HERO SECTION */}
-      <section className="relative min-h-screen flex flex-col justify-center pt-20 px-4 md:px-6 overflow-hidden">
+    <main className="min-h-screen relative overflow-x-hidden w-full box-border">
+      {/* 1. HERO SECTION */}
+      <section className="relative min-h-screen flex flex-col justify-center pt-20 px-4 md:px-6 overflow-hidden w-full">
         <div className="absolute top-0 right-0 w-full h-full z-0 opacity-40">
            <Image 
             src={heroImage?.imageUrl || ""} 
@@ -61,8 +69,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* HOW IT WORKS */}
-      <section className="py-24 md:py-32 relative px-4 md:px-6">
+      {/* 2. HOW IT WORKS (Como funciona) */}
+      <section className="py-24 md:py-32 relative px-4 md:px-6 w-full">
         <div className="container mx-auto">
           <div className="text-center mb-16 space-y-4">
             <h2 className="text-primary font-headline text-sm tracking-[0.3em] uppercase font-bold">
@@ -102,8 +110,8 @@ export default function Home() {
 
       <Ticker />
 
-      {/* HOW TO START */}
-      <section className="py-24 px-4 md:px-6">
+      {/* 3. HOW TO START (Como começar) */}
+      <section className="py-24 px-4 md:px-6 w-full">
         <div className="container mx-auto text-center">
           <h2 className="font-headline text-4xl md:text-5xl uppercase italic mb-16">Como Começar</h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 gap-8 max-w-5xl mx-auto">
@@ -114,7 +122,7 @@ export default function Home() {
               "Robert analisa e monta sua estratégia.",
               "Comece a executar com acompanhamento!"
             ].map((step, i) => (
-              <div key={i} className="space-y-4">
+              <div key={i} className="space-y-4 group">
                 <div className="text-6xl font-headline font-bold text-white/10 group-hover:text-primary/20 transition-colors">0{i+1}</div>
                 <p className="text-sm font-medium leading-relaxed">{step}</p>
               </div>
@@ -124,8 +132,55 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PRICING PLANS */}
-      <section id="pricing" className="py-24 md:py-32 px-4 md:px-6">
+      {/* 4. RESULTS CAROUSEL (Resultados dos alunos - MOVIDO PARA CIMA) */}
+      <section className="py-24 md:py-32 px-4 md:px-6 w-full bg-gradient-to-b from-black via-[#1a0a0a]/40 to-black">
+        <div className="container mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="font-headline text-4xl md:text-5xl uppercase italic mb-4">
+              CONFIRA ALGUNS <span className="premium-gradient-text">RESULTADOS</span> DE ALUNOS
+            </h2>
+            <p className="text-muted-foreground italic tracking-wide uppercase text-sm max-w-2xl mx-auto">
+              Evoluções reais conquistadas com estratégia, constância e acompanhamento.
+            </p>
+          </div>
+          
+          <Carousel 
+            className="w-full max-w-6xl mx-auto"
+            plugins={[autoplayPlugin.current]}
+            onMouseEnter={autoplayPlugin.current.stop}
+            onMouseLeave={autoplayPlugin.current.reset}
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+          >
+            <CarouselContent className="-ml-4">
+              {results.map((res, i) => (
+                <CarouselItem key={i} className="pl-4 basis-full sm:basis-1/2 lg:basis-1/3">
+                  <div className="card-premium p-0 overflow-hidden group aspect-[3/4] relative border-primary/10 hover:border-primary/40 transition-all duration-500">
+                    <Image 
+                      src={res?.imageUrl || ""} 
+                      alt={`Resultado ${i+1}`} 
+                      fill 
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      data-ai-hint="fitness transformation"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-60"></div>
+                    <div className="absolute bottom-6 left-6 z-10">
+                      <p className="font-headline italic uppercase text-lg text-white shadow-sm">Resultado 0{i+1}</p>
+                    </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="hidden xl:flex bg-black/50 border-white/20 hover:bg-primary hover:text-black" />
+            <CarouselNext className="hidden xl:flex bg-black/50 border-white/20 hover:bg-primary hover:text-black" />
+          </Carousel>
+        </div>
+      </section>
+
+      {/* 5. PRICING PLANS (Oferta / Planos) */}
+      <section id="pricing" className="py-24 md:py-32 px-4 md:px-6 w-full">
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {/* COMBO PLAN */}
@@ -202,42 +257,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* RESULTS CAROUSEL */}
-      <section className="py-24 md:py-32 px-4 md:px-6">
-        <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="font-headline text-4xl md:text-5xl uppercase italic mb-4">Confira Alguns Resultados</h2>
-            <p className="text-muted-foreground italic tracking-wide uppercase text-sm">Evoluções reais conquistadas com estratégia e acompanhamento.</p>
-          </div>
-          
-          <Carousel className="w-full max-w-5xl mx-auto">
-            <CarouselContent className="-ml-4">
-              {results.map((res, i) => (
-                <CarouselItem key={i} className="pl-4 basis-full sm:basis-1/2 md:basis-1/3">
-                  <div className="card-premium p-0 overflow-hidden group aspect-[3/4] relative">
-                    <Image 
-                      src={res?.imageUrl || ""} 
-                      alt={`Resultado ${i+1}`} 
-                      fill 
-                      className="object-cover transition-transform duration-700 group-hover:scale-110"
-                      data-ai-hint="fitness transformation"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-                    <div className="absolute bottom-6 left-6">
-                      <p className="font-headline italic uppercase text-lg">Resultado 0{i+1}</p>
-                    </div>
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="hidden md:flex bg-black/50 border-white/20" />
-            <CarouselNext className="hidden md:flex bg-black/50 border-white/20" />
-          </Carousel>
-        </div>
-      </section>
-
-      {/* BIO SECTION */}
-      <section className="py-24 md:py-32 relative overflow-hidden px-4 md:px-6">
+      {/* 6. BIO SECTION (Quem é Robert Kirchmair) */}
+      <section className="py-24 md:py-32 relative overflow-hidden px-4 md:px-6 w-full">
         <div className="container mx-auto relative z-10 grid md:grid-cols-2 gap-16 items-center">
           <div className="space-y-8">
             <h2 className="font-headline text-4xl md:text-6xl uppercase italic leading-none">
@@ -278,8 +299,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* GUARANTEE */}
-      <section className="py-24 md:py-32 px-4 md:px-6">
+      {/* 7. GUARANTEE (Garantia) */}
+      <section className="py-24 md:py-32 px-4 md:px-6 w-full">
         <div className="container mx-auto text-center">
           <div className="inline-block relative mb-12">
             <div className="text-[8rem] md:text-[12rem] font-headline font-bold text-accent/10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none">7</div>
@@ -292,8 +313,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FINAL CTA */}
-      <section className="py-24 md:py-32 px-4 md:px-6">
+      {/* 8. FINAL CTA */}
+      <section className="py-24 md:py-32 px-4 md:px-6 w-full">
         <div className="container mx-auto text-center space-y-12">
           <div className="space-y-4">
             <p className="text-primary font-headline tracking-[0.2em] uppercase text-sm">Não espere o momento perfeito</p>
@@ -312,7 +333,7 @@ export default function Home() {
       </section>
 
       {/* FOOTER */}
-      <footer className="py-12 border-t border-white/5 bg-black/80 px-4 md:px-6">
+      <footer className="py-12 border-t border-white/5 bg-black/80 px-4 md:px-6 w-full">
         <div className="container mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="text-center md:text-left">
             <h3 className="font-headline text-xl uppercase italic tracking-widest">Apex Kirchmair</h3>
