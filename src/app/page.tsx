@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -11,28 +10,28 @@ import { Ticker } from '@/components/landing/Ticker';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export default function Home() {
-  const expertHero = PlaceHolderImages.find(img => img.id === 'hero-expert');
+  const expertHero = "https://i.postimg.cc/BvVhhckR/000000.png";
   const bioImage = PlaceHolderImages.find(img => img.id === 'bio-personal');
   const results = ['result-1', 'result-2', 'result-3', 'result-4', 'result-5', 'result-6'].map(id => PlaceHolderImages.find(img => img.id === id));
 
   return (
     <main className="min-h-screen relative overflow-x-hidden w-full box-border bg-black">
       {/* 1. HERO SECTION - PRETO SÓLIDO #000000 */}
-      <section className="relative min-h-screen flex items-center px-6 md:px-12 overflow-hidden w-full bg-[#000000]">
+      <section className="relative min-h-[90vh] lg:min-h-screen flex items-center px-6 md:px-12 overflow-hidden w-full bg-[#000000]">
         <div className="container mx-auto relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-12 items-center">
             {/* TEXT CONTENT */}
-            <div className="space-y-8 animate-in fade-in slide-in-from-left-8 duration-1000 max-w-full order-2 lg:order-1">
+            <div className="space-y-6 animate-in fade-in slide-in-from-left-8 duration-1000 max-w-[780px] order-2 lg:order-1">
               <Badge variant="outline" className="border-primary text-primary font-headline px-4 py-1 tracking-widest text-xs uppercase animate-pulse">
                 Consultoria Premium Robert Kirchmair
               </Badge>
               
-              <h1 className="title-fluid">
-                TRANSFORME SEU CORPO <br className="hidden md:block" />
+              <h1 className="hero-title">
+                TRANSFORME SEU <span className="premium-gradient-text">CORPO</span> <br className="hidden md:block" />
                 COM <span className="premium-gradient-text">ESTRATÉGIA</span>
               </h1>
 
-              <p className="text-xl md:text-2xl text-muted-foreground max-w-xl leading-relaxed">
+              <p className="hero-subtitle">
                 Acompanhamento individual para quem quer sair do achismo, treinar com direção e evoluir com um plano feito para sua rotina.
               </p>
 
@@ -41,7 +40,7 @@ export default function Home() {
                 <p className="text-sm font-semibold italic">Método personalizado para resultados consistentes, com treino, dieta e suporte constante.</p>
               </div>
 
-              <div className="space-y-4">
+              <div className="space-y-4 pt-4">
                 <Button size="lg" className="btn-premium h-16 px-12 text-xl font-headline italic rounded-full" asChild>
                   <a href="#pricing">QUERO ENTRAR NA CONSULTORIA</a>
                 </Button>
@@ -53,9 +52,9 @@ export default function Home() {
 
             {/* EXPERT IMAGE - POSICIONADA À DIREITA */}
             <div className="relative order-1 lg:order-2 flex justify-center lg:justify-end">
-              <div className="relative w-full max-w-[500px] lg:max-w-none lg:w-[120%] h-[400px] md:h-[600px] lg:h-[90vh] transition-transform duration-700 hover:scale-[1.01]">
+              <div className="relative w-full max-w-[450px] lg:max-w-none lg:w-[110%] h-[350px] md:h-[500px] lg:h-[85vh] transition-transform duration-700 hover:scale-[1.01]">
                 <Image 
-                  src={expertHero?.imageUrl || ""} 
+                  src={expertHero} 
                   alt="Robert Kirchmair" 
                   fill 
                   className="object-contain object-bottom lg:object-right-bottom"
