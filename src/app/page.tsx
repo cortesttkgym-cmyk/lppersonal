@@ -7,23 +7,12 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Check, Flame, ShieldCheck } from 'lucide-react';
 import { Ticker } from '@/components/landing/Ticker';
-import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import Autoplay from 'embla-carousel-autoplay';
 
 export default function Home() {
   const heroImage = PlaceHolderImages.find(img => img.id === 'hero-personal');
   const bioImage = PlaceHolderImages.find(img => img.id === 'bio-personal');
   const results = ['result-1', 'result-2', 'result-3', 'result-4', 'result-5', 'result-6'].map(id => PlaceHolderImages.find(img => img.id === id));
-
-  // Configuração do Autoplay para ser 100% automático e fluido
-  const autoplay = React.useRef(
-    Autoplay({ 
-      delay: 3000, 
-      stopOnInteraction: false, 
-      stopOnMouseEnter: true 
-    })
-  );
 
   return (
     <main className="min-h-screen relative overflow-x-hidden w-full box-border bg-black">
@@ -137,9 +126,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. RESULTS CAROUSEL - AUTOMÁTICO E IMPACTANTE */}
-      <section className="py-24 md:py-32 px-6 w-full results-section-gradient overflow-hidden">
-        <div className="container mx-auto">
+      {/* 4. RESULTS SECTION - ESTEIRA CONTÍNUA (MARQUEE) */}
+      <section className="py-24 md:py-32 w-full results-section-gradient overflow-hidden">
+        <div className="container mx-auto px-6">
           <div className="text-center mb-16 space-y-4">
             <h2 className="font-headline text-4xl md:text-6xl uppercase italic leading-[0.9] tracking-tighter">
               CONFIRA ALGUNS <br />
@@ -150,37 +139,30 @@ export default function Home() {
               Evoluções conquistadas com estratégia, constância e acompanhamento individual.
             </p>
           </div>
-          
-          <Carousel 
-            className="w-full max-w-7xl mx-auto"
-            plugins={[autoplay.current]}
-            opts={{
-              align: "start",
-              loop: true,
-              skipSnaps: false,
-            }}
-          >
-            <CarouselContent className="-ml-4">
-              {results.map((res, i) => (
-                <CarouselItem key={i} className="pl-4 basis-full sm:basis-1/2 lg:basis-1/3">
-                  <div className="card-premium p-0 overflow-hidden group aspect-[3/4] relative border-primary/20 hover:border-primary/60 transition-all duration-500 shadow-2xl rounded-2xl">
-                    <Image 
-                      src={res?.imageUrl || ""} 
-                      alt={`Resultado ${i+1}`} 
-                      fill 
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
-                      data-ai-hint="fitness transformation"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80"></div>
-                    <div className="absolute bottom-6 left-6 z-10">
-                      <p className="font-headline italic uppercase text-lg text-white drop-shadow-lg bg-black/60 px-4 py-1 rounded-full border border-white/10">Resultado 0{i+1}</p>
-                    </div>
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            {/* Setas removidas para focar no movimento automático conforme pedido */}
-          </Carousel>
+        </div>
+        
+        {/* Marquee Track */}
+        <div className="w-full overflow-hidden py-10">
+          <div className="marquee-results-track gap-6">
+            {/* Renderiza os resultados duas vezes para loop infinito sem cortes */}
+            {[...results, ...results].map((res, i) => (
+              <div key={i} className="flex-shrink-0 w-[300px] md:w-[400px] aspect-[3/4] relative card-premium p-0 overflow-hidden border-primary/20 hover:border-primary/60 transition-all duration-500 shadow-2xl rounded-2xl">
+                <Image 
+                  src={res?.imageUrl || ""} 
+                  alt={`Resultado ${i % results.length + 1}`} 
+                  fill 
+                  className="object-cover transition-transform duration-700 hover:scale-105"
+                  data-ai-hint="fitness transformation"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80"></div>
+                <div className="absolute bottom-6 left-6 z-10">
+                  <p className="font-headline italic uppercase text-lg text-white drop-shadow-lg bg-black/60 px-4 py-1 rounded-full border border-white/10">
+                    Resultado 0{i % results.length + 1}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
