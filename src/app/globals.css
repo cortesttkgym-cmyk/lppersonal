@@ -264,7 +264,7 @@
   background: linear-gradient(180deg, #000 0%, #1a0a2e 30%, #2a0a1a 70%, #000 100%);
   position: relative;
   width: 100%;
-  overflow: hidden;
+  overflow: visible; /* Alterado para permitir sombras e conteúdo total */
 }
 
 .results-section-gradient::before {
@@ -279,13 +279,13 @@
 @media (max-width: 768px) {
   .results-section-gradient {
     padding-top: 52px !important;
-    padding-bottom: 56px !important;
+    padding-bottom: 80px !important; /* Aumentado padding inferior */
   }
 
   .results-carousel {
     width: 100% !important;
     overflow: hidden !important;
-    padding: 0 !important; /* Removido padding para permitir peek effect total */
+    padding: 20px 0 !important; /* Adicionado padding interno para não cortar sombras */
     margin-top: 24px;
   }
 
@@ -293,6 +293,7 @@
     animation-duration: 35s; /* Ajustado para cards maiores */
     gap: 18px !important;
     align-items: center;
+    padding-bottom: 20px; /* Garante que o fundo do card não seja cortado */
   }
 
   .results-header-container {
@@ -318,24 +319,27 @@
     width: 74% !important;
     max-width: 280px !important;
     min-width: 240px !important;
-    border-radius: 10px !important;
+    border-radius: 12px !important;
+    height: 380px !important; /* Altura fixa para o container do card */
   }
 
   .results-card img {
-    height: 260px !important; /* Aumentada a altura das imagens */
-    object-position: center top !important; /* Foco no topo para evitar cortes ruins */
+    height: 380px !important; /* Aumentada a altura das imagens para visibilidade total */
+    object-position: center center !important; 
+    object-fit: cover !important;
   }
 }
 
 @media (max-width: 480px) {
   .results-card {
-    flex: 0 0 72% !important;
-    width: 72% !important;
-    max-width: 260px !important;
-    min-width: 220px !important;
+    flex: 0 0 80% !important; /* Um pouco maior em telas muito pequenas */
+    width: 80% !important;
+    max-width: 300px !important;
+    min-width: 240px !important;
+    height: 360px !important;
   }
 
   .results-card img {
-    height: 240px !important;
+    height: 360px !important;
   }
 }

@@ -136,23 +136,23 @@ export default function Home() {
       <Ticker />
 
       {/* 4. RESULTS SECTION - MARQUEE (COMPACT ON MOBILE) */}
-      <section className="results-section-gradient py-16 md:py-32 w-full overflow-hidden">
-        <div className="container mx-auto px-5 text-center results-header-container mb-8 md:mb-12">
-          <h2 className="results-title font-headline text-2xl md:text-6xl uppercase italic leading-[1.1] tracking-tighter mb-4">
+      <section className="results-section-gradient py-20 md:py-32 w-full">
+        <div className="container mx-auto px-5 text-center results-header-container mb-12">
+          <h2 className="results-title font-headline text-3xl md:text-6xl uppercase italic leading-[1.1] tracking-tighter mb-4">
             CONFIRA ALGUNS <br className="hidden md:block" />
             <span className="text-primary">RESULTADOS REAIS</span> <br className="hidden md:block" />
             DOS NOSSOS ALUNOS!
           </h2>
-          <p className="results-subtitle text-muted-foreground italic uppercase text-[10px] md:text-sm max-w-2xl mx-auto px-4">
+          <p className="results-subtitle text-muted-foreground italic uppercase text-xs md:text-sm max-w-2xl mx-auto px-4">
             Evoluções conquistadas com estratégia, constância e acompanhamento individual.
           </p>
         </div>
         
-        <div className="w-full overflow-hidden py-6 md:py-10 results-carousel">
+        <div className="w-full results-carousel py-10">
           <div className="marquee-results-track">
             {[...resultItems, ...resultItems].map((imgUrl, i) => (
-              <div key={i} className="results-card flex-shrink-0 relative card-premium p-0 overflow-hidden border-primary/20 hover:border-primary/60 transition-all duration-500 rounded-2xl md:w-[350px] md:aspect-[3/4]">
-                <div className="relative w-full h-full">
+              <div key={i} className="results-card flex-shrink-0 relative card-premium p-0 border-primary/20 hover:border-primary/60 transition-all duration-500 rounded-2xl md:w-[350px] h-[450px] md:h-[500px]">
+                <div className="relative w-full h-full overflow-hidden rounded-2xl">
                   <Image 
                     src={imgUrl} 
                     alt="Resultado Real" 
