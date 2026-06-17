@@ -275,15 +275,23 @@
   pointer-events: none;
 }
 
+/* MOBILE RESULTS ADJUSTMENTS */
 @media (max-width: 768px) {
   .results-section-gradient {
     padding-top: 36px !important;
     padding-bottom: 36px !important;
   }
 
+  .results-carousel {
+    width: 100% !important;
+    overflow: hidden !important;
+    padding: 0 12px !important;
+  }
+
   .marquee-results-track {
     animation-duration: 25s;
     gap: 12px !important;
+    align-items: center;
   }
 
   .results-header-container {
@@ -303,10 +311,10 @@
   }
 
   .results-card {
-    flex: 0 0 calc(50% - 6px) !important;
-    width: calc(50% - 6px) !important;
-    max-width: calc(50% - 6px) !important;
-    min-width: calc(50% - 6px) !important;
+    flex: 0 0 calc(50% - 8px) !important;
+    width: calc(50% - 8px) !important;
+    max-width: calc(50% - 8px) !important;
+    min-width: calc(50% - 8px) !important;
     border-radius: 12px !important;
   }
 
@@ -330,4 +338,9 @@
   .results-card img {
     height: 160px !important;
   }
+}
+
+@keyframes scrollResults {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }

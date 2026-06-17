@@ -151,13 +151,15 @@ export default function Home() {
         <div className="w-full overflow-hidden py-6 md:py-10 results-carousel">
           <div className="marquee-results-track">
             {[...resultItems, ...resultItems].map((imgUrl, i) => (
-              <div key={i} className="results-card flex-shrink-0 w-[180px] md:w-[350px] aspect-[3/4] md:aspect-[3/4] relative card-premium p-0 overflow-hidden border-primary/20 hover:border-primary/60 transition-all duration-500 rounded-2xl">
-                <Image 
-                  src={imgUrl} 
-                  alt="Resultado Real" 
-                  fill 
-                  className="object-cover transition-transform duration-700 hover:scale-105"
-                />
+              <div key={i} className="results-card flex-shrink-0 relative card-premium p-0 overflow-hidden border-primary/20 hover:border-primary/60 transition-all duration-500 rounded-2xl md:w-[350px] md:aspect-[3/4]">
+                <div className="relative w-full h-full">
+                  <Image 
+                    src={imgUrl} 
+                    alt="Resultado Real" 
+                    fill 
+                    className="object-cover transition-transform duration-700 hover:scale-105"
+                  />
+                </div>
               </div>
             ))}
           </div>
