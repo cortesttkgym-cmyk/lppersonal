@@ -30,23 +30,37 @@
 @layer base {
   * {
     @apply border-border;
+    box-sizing: border-box;
   }
   body {
-    @apply bg-black text-foreground font-body antialiased;
+    @apply bg-black text-foreground font-body antialiased overflow-x-hidden;
+    background-color: #000;
+    /* Efeito de fagulhas/brasa sutis */
     background-image: 
-      radial-gradient(1px 1px at 15% 10%, rgba(255, 138, 0, 0.4) 100%, transparent),
-      radial-gradient(1.5px 1.5px at 85% 25%, rgba(116, 27, 27, 0.4) 100%, transparent),
-      radial-gradient(1px 1px at 45% 40%, rgba(214, 154, 31, 0.3) 100%, transparent),
-      radial-gradient(2px 2px at 20% 70%, rgba(255, 138, 0, 0.2) 100%, transparent),
-      radial-gradient(1px 1px at 75% 60%, rgba(116, 27, 27, 0.3) 100%, transparent),
-      radial-gradient(1.5px 1.5px at 55% 85%, rgba(255, 138, 0, 0.3) 100%, transparent),
-      radial-gradient(1px 1px at 10% 90%, rgba(214, 154, 31, 0.2) 100%, transparent),
-      radial-gradient(2px 2px at 90% 95%, rgba(116, 27, 27, 0.2) 100%, transparent),
-      radial-gradient(1px 1px at 35% 15%, rgba(255, 138, 0, 0.2) 100%, transparent),
-      radial-gradient(1px 1px at 65% 5%, rgba(214, 154, 31, 0.2) 100%, transparent);
+      radial-gradient(1px 1px at 10% 15%, #ff8a00 100%, transparent),
+      radial-gradient(1.2px 1.2px at 25% 45%, #741b1b 100%, transparent),
+      radial-gradient(1px 1px at 40% 85%, #d69a1f 100%, transparent),
+      radial-gradient(1.5px 1.5px at 65% 35%, #ff4d00 100%, transparent),
+      radial-gradient(1px 1px at 80% 10%, #741b1b 100%, transparent),
+      radial-gradient(1.2px 1.2px at 90% 70%, #ff8a00 100%, transparent),
+      radial-gradient(1px 1px at 15% 90%, #d69a1f 100%, transparent),
+      radial-gradient(1.5px 1.5px at 45% 10%, #ff4d00 100%, transparent),
+      radial-gradient(1px 1px at 75% 60%, #741b1b 100%, transparent),
+      radial-gradient(1px 1px at 55% 95%, #ff8a00 100%, transparent),
+      radial-gradient(1.2px 1.2px at 5% 50%, #d69a1f 100%, transparent),
+      radial-gradient(1px 1px at 95% 5%, #ff4d00 100%, transparent);
     background-attachment: fixed;
-    background-size: 100% 100%;
+    background-size: cover;
   }
+}
+
+.title-fluid {
+  font-size: clamp(2rem, 7vw, 6.5rem);
+  line-height: 0.95;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-break: normal;
+  @apply uppercase italic font-bold tracking-tighter;
 }
 
 .premium-gradient-text {

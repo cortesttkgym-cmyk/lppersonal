@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <main className="min-h-screen relative overflow-x-hidden">
       {/* HERO SECTION */}
-      <section className="relative min-h-screen flex flex-col justify-center pt-20 px-6 overflow-hidden">
+      <section className="relative min-h-screen flex flex-col justify-center pt-20 px-4 md:px-6 overflow-hidden">
         <div className="absolute top-0 right-0 w-full h-full z-0 opacity-40">
            <Image 
             src={heroImage?.imageUrl || ""} 
@@ -24,18 +24,19 @@ export default function Home() {
             fill 
             className="object-cover object-right md:object-center grayscale brightness-50"
             data-ai-hint="fitness trainer"
+            priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
           <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent"></div>
         </div>
 
         <div className="container mx-auto relative z-10 grid lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-8 animate-in fade-in slide-in-from-left-8 duration-1000">
+          <div className="space-y-8 animate-in fade-in slide-in-from-left-8 duration-1000 max-w-full">
             <Badge variant="outline" className="border-primary text-primary font-headline px-4 py-1 tracking-widest text-xs uppercase animate-pulse">
               Consultoria Premium Robert Kirchmair
             </Badge>
             
-            <h1 className="font-headline text-5xl md:text-7xl lg:text-8xl font-bold uppercase italic leading-[0.9] tracking-tighter">
+            <h1 className="title-fluid">
               Transforme seu <span className="premium-gradient-text">corpo</span> com estratégia
             </h1>
 
@@ -61,8 +62,8 @@ export default function Home() {
       </section>
 
       {/* HOW IT WORKS */}
-      <section className="py-32 relative">
-        <div className="container mx-auto px-6">
+      <section className="py-24 md:py-32 relative px-4 md:px-6">
+        <div className="container mx-auto">
           <div className="text-center mb-16 space-y-4">
             <h2 className="text-primary font-headline text-sm tracking-[0.3em] uppercase font-bold">
               🔥 Como Funciona
@@ -102,10 +103,10 @@ export default function Home() {
       <Ticker />
 
       {/* HOW TO START */}
-      <section className="py-24">
-        <div className="container mx-auto px-6 text-center">
+      <section className="py-24 px-4 md:px-6">
+        <div className="container mx-auto text-center">
           <h2 className="font-headline text-4xl md:text-5xl uppercase italic mb-16">Como Começar</h2>
-          <div className="grid md:grid-cols-5 gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 gap-8 max-w-5xl mx-auto">
             {[
               "Escolha o plano ideal para o seu momento.",
               "Faça sua inscrição segura.",
@@ -124,8 +125,8 @@ export default function Home() {
       </section>
 
       {/* PRICING PLANS */}
-      <section id="pricing" className="py-32">
-        <div className="container mx-auto px-6">
+      <section id="pricing" className="py-24 md:py-32 px-4 md:px-6">
+        <div className="container mx-auto">
           <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {/* COMBO PLAN */}
             <div className="card-premium glow-orange relative flex flex-col h-full border-primary/40">
@@ -161,7 +162,7 @@ export default function Home() {
                   <span className="font-bold">R$ 797,00</span>
                 </Button>
                 <Button className="w-full bg-white/5 border border-accent/40 hover:bg-white/10 h-14 text-lg font-headline italic justify-between px-8 relative overflow-hidden">
-                  <div className="flex flex-col items-start">
+                  <div className="flex flex-col items-start text-left">
                     <span>Plano Semestral</span>
                     <span className="text-[10px] uppercase tracking-widest text-accent">Melhor custo-benefício</span>
                   </div>
@@ -202,8 +203,8 @@ export default function Home() {
       </section>
 
       {/* RESULTS CAROUSEL */}
-      <section className="py-32">
-        <div className="container mx-auto px-6">
+      <section className="py-24 md:py-32 px-4 md:px-6">
+        <div className="container mx-auto">
           <div className="text-center mb-16">
             <h2 className="font-headline text-4xl md:text-5xl uppercase italic mb-4">Confira Alguns Resultados</h2>
             <p className="text-muted-foreground italic tracking-wide uppercase text-sm">Evoluções reais conquistadas com estratégia e acompanhamento.</p>
@@ -212,7 +213,7 @@ export default function Home() {
           <Carousel className="w-full max-w-5xl mx-auto">
             <CarouselContent className="-ml-4">
               {results.map((res, i) => (
-                <CarouselItem key={i} className="pl-4 md:basis-1/3">
+                <CarouselItem key={i} className="pl-4 basis-full sm:basis-1/2 md:basis-1/3">
                   <div className="card-premium p-0 overflow-hidden group aspect-[3/4] relative">
                     <Image 
                       src={res?.imageUrl || ""} 
@@ -236,8 +237,8 @@ export default function Home() {
       </section>
 
       {/* BIO SECTION */}
-      <section className="py-32 relative overflow-hidden">
-        <div className="container mx-auto px-6 relative z-10 grid md:grid-cols-2 gap-16 items-center">
+      <section className="py-24 md:py-32 relative overflow-hidden px-4 md:px-6">
+        <div className="container mx-auto relative z-10 grid md:grid-cols-2 gap-16 items-center">
           <div className="space-y-8">
             <h2 className="font-headline text-4xl md:text-6xl uppercase italic leading-none">
               Quem é <span className="text-primary">Robert Kirchmair</span>?
@@ -278,11 +279,11 @@ export default function Home() {
       </section>
 
       {/* GUARANTEE */}
-      <section className="py-32">
-        <div className="container mx-auto px-6 text-center">
+      <section className="py-24 md:py-32 px-4 md:px-6">
+        <div className="container mx-auto text-center">
           <div className="inline-block relative mb-12">
-            <div className="text-[12rem] font-headline font-bold text-accent/10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none">7</div>
-            <ShieldCheck className="h-32 w-32 text-accent mx-auto relative z-10 drop-shadow-[0_0_20px_rgba(214,154,31,0.5)]" />
+            <div className="text-[8rem] md:text-[12rem] font-headline font-bold text-accent/10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none">7</div>
+            <ShieldCheck className="h-24 w-24 md:h-32 md:w-32 text-accent mx-auto relative z-10 drop-shadow-[0_0_20px_rgba(214,154,31,0.5)]" />
           </div>
           <h2 className="font-headline text-3xl uppercase italic mb-4">Garantia de 7 Dias</h2>
           <p className="text-muted-foreground max-w-xl mx-auto text-lg">
@@ -292,17 +293,17 @@ export default function Home() {
       </section>
 
       {/* FINAL CTA */}
-      <section className="py-32 bg-gradient-to-t from-black via-black/80 to-black">
-        <div className="container mx-auto px-6 text-center space-y-12">
+      <section className="py-24 md:py-32 px-4 md:px-6">
+        <div className="container mx-auto text-center space-y-12">
           <div className="space-y-4">
             <p className="text-primary font-headline tracking-[0.2em] uppercase text-sm">Não espere o momento perfeito</p>
-            <h2 className="font-headline text-4xl md:text-7xl uppercase italic leading-none max-w-4xl mx-auto">
+            <h2 className="title-fluid max-w-5xl mx-auto">
               Transforme seu corpo com estratégia e <span className="premium-gradient-text">acompanhamento</span>.
             </h2>
           </div>
           
           <div className="space-y-6">
-            <Button size="lg" className="btn-premium h-20 px-16 text-2xl font-headline italic rounded-full shadow-[0_0_50px_rgba(255,138,0,0.4)] animate-pulse" asChild>
+            <Button size="lg" className="btn-premium h-20 px-8 md:px-16 text-xl md:text-2xl font-headline italic rounded-full shadow-[0_0_50px_rgba(255,138,0,0.4)] animate-pulse" asChild>
               <a href="#pricing">QUERO ENTRAR NA CONSULTORIA</a>
             </Button>
             <p className="text-muted-foreground text-sm italic">Clique no botão e escolha o plano ideal para o seu objetivo.</p>
@@ -311,8 +312,8 @@ export default function Home() {
       </section>
 
       {/* FOOTER */}
-      <footer className="py-12 border-t border-white/5 bg-black">
-        <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+      <footer className="py-12 border-t border-white/5 bg-black/80 px-4 md:px-6">
+        <div className="container mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="text-center md:text-left">
             <h3 className="font-headline text-xl uppercase italic tracking-widest">Apex Kirchmair</h3>
             <p className="text-xs text-muted-foreground mt-2">© 2025 Robert Kirchmair. Todos os direitos reservados.</p>
