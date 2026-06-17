@@ -1,3 +1,4 @@
+
 'use client';
 
 import React from 'react';
@@ -16,11 +17,8 @@ export default function Home() {
 
   return (
     <main className="min-h-screen relative overflow-x-hidden w-full box-border bg-black">
-      {/* 1. HERO SECTION */}
-      <section className="relative min-h-screen flex items-center px-6 md:px-12 overflow-hidden w-full">
-        {/* Glow behind expert */}
-        <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[60%] h-[60%] bg-primary/10 blur-[120px] rounded-full z-0 hidden lg:block"></div>
-        
+      {/* 1. HERO SECTION - PRETO SÓLIDO #000000 */}
+      <section className="relative min-h-screen flex items-center px-6 md:px-12 overflow-hidden w-full bg-[#000000]">
         <div className="container mx-auto relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* TEXT CONTENT */}
@@ -53,18 +51,14 @@ export default function Home() {
               </div>
             </div>
 
-            {/* EXPERT IMAGE */}
+            {/* EXPERT IMAGE - POSICIONADA À DIREITA */}
             <div className="relative order-1 lg:order-2 flex justify-center lg:justify-end">
-              <div className="relative w-full max-w-[500px] lg:max-w-none lg:w-[120%] h-[400px] md:h-[600px] lg:h-[85vh] transition-transform duration-700 hover:scale-[1.02]">
-                {/* Glow directly behind the expert image on mobile/all */}
-                <div className="absolute inset-0 bg-primary/5 blur-[80px] rounded-full lg:hidden"></div>
-                
+              <div className="relative w-full max-w-[500px] lg:max-w-none lg:w-[120%] h-[400px] md:h-[600px] lg:h-[90vh] transition-transform duration-700 hover:scale-[1.01]">
                 <Image 
                   src={expertHero?.imageUrl || ""} 
                   alt="Robert Kirchmair" 
                   fill 
                   className="object-contain object-bottom lg:object-right-bottom"
-                  data-ai-hint="fitness trainer expert"
                   priority
                 />
               </div>
@@ -112,8 +106,6 @@ export default function Home() {
         </div>
       </section>
 
-      <Ticker />
-
       {/* 3. HOW TO START */}
       <section className="py-24 px-6 w-full">
         <div className="container mx-auto text-center">
@@ -136,7 +128,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. RESULTS SECTION - ESTEIRA CONTÍNUA (MARQUEE) */}
+      <Ticker />
+
+      {/* 4. RESULTS SECTION - MARQUEE CONTÍNUO */}
       <section className="py-24 md:py-32 w-full results-section-gradient overflow-hidden">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16 space-y-4">
@@ -161,7 +155,6 @@ export default function Home() {
                   alt={`Resultado ${i % results.length + 1}`} 
                   fill 
                   className="object-cover transition-transform duration-700 hover:scale-105"
-                  data-ai-hint="fitness transformation"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80"></div>
                 <div className="absolute bottom-6 left-6 z-10">
@@ -286,7 +279,6 @@ export default function Home() {
                 alt="Robert Kirchmair" 
                 fill 
                 className="object-cover grayscale"
-                data-ai-hint="personal trainer"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#741b1b]/60 to-transparent"></div>
             </div>
