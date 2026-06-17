@@ -12,7 +12,10 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 export default function Home() {
   const expertHero = "https://i.postimg.cc/BvVhhckR/000000.png";
   const bioImage = PlaceHolderImages.find(img => img.id === 'bio-personal');
-  const results = ['result-1', 'result-2', 'result-3', 'result-4', 'result-5', 'result-6'].map(id => PlaceHolderImages.find(img => img.id === id));
+  
+  // Imagem única para todos os resultados conforme solicitado
+  const resultImage = "https://img.daquidali.com.br/2026/antes-e-depois-academia-2.jpg";
+  const resultItems = Array(6).fill(resultImage);
 
   return (
     <main className="min-h-screen relative overflow-x-hidden w-full box-border bg-black">
@@ -148,23 +151,17 @@ export default function Home() {
           </div>
         </div>
         
-        {/* Marquee Track */}
+        {/* Marquee Track - Esteira Contínua */}
         <div className="w-full overflow-hidden py-10">
           <div className="marquee-results-track gap-6">
-            {[...results, ...results].map((res, i) => (
+            {[...resultItems, ...resultItems].map((imgUrl, i) => (
               <div key={i} className="flex-shrink-0 w-[300px] md:w-[400px] aspect-[3/4] relative card-premium p-0 overflow-hidden border-primary/20 hover:border-primary/60 transition-all duration-500 shadow-2xl rounded-2xl">
                 <Image 
-                  src={res?.imageUrl || ""} 
-                  alt={`Resultado ${i % results.length + 1}`} 
+                  src={imgUrl} 
+                  alt={`Resultado ${i + 1}`} 
                   fill 
                   className="object-cover transition-transform duration-700 hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80"></div>
-                <div className="absolute bottom-6 left-6 z-10">
-                  <p className="font-headline italic uppercase text-lg text-white drop-shadow-lg bg-black/60 px-4 py-1 rounded-full border border-white/10">
-                    Resultado 0{i % results.length + 1}
-                  </p>
-                </div>
               </div>
             ))}
           </div>
