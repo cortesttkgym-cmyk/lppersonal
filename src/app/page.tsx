@@ -13,28 +13,27 @@ export default function Home() {
   const expertHero = "https://i.postimg.cc/BvVhhckR/000000.png";
   const bioImage = PlaceHolderImages.find(img => img.id === 'bio-personal');
   
-  // Imagem única para todos os resultados conforme solicitado
   const resultImage = "https://img.daquidali.com.br/2026/antes-e-depois-academia-2.jpg";
   const resultItems = Array(6).fill(resultImage);
 
   return (
     <main className="min-h-screen relative overflow-x-hidden w-full box-border bg-black">
       {/* 1. HERO SECTION - PRETO SÓLIDO #000000 */}
-      <section className="relative min-h-[90vh] lg:min-h-screen flex items-center px-6 md:px-12 overflow-visible w-full bg-[#000000]">
-        <div className="container mx-auto relative z-10 overflow-visible">
+      <section className="hero-section relative min-h-[90vh] lg:min-h-screen flex items-center px-6 md:px-12 w-full bg-[#000000]">
+        <div className="hero-inner container mx-auto relative z-10">
           <div className="grid lg:grid-cols-[1.12fr_0.88fr] gap-12 items-center overflow-visible">
             {/* TEXT CONTENT */}
-            <div className="space-y-6 animate-in fade-in slide-in-from-left-8 duration-1000 max-w-[800px] order-2 lg:order-1 overflow-visible">
+            <div className="hero-content space-y-6 animate-in fade-in slide-in-from-left-8 duration-1000 order-2 lg:order-1">
               <Badge variant="outline" className="border-primary text-primary font-headline px-4 py-1 tracking-widest text-xs uppercase animate-pulse">
                 Consultoria Premium Robert Kirchmair
               </Badge>
               
               <h1 className="hero-title">
-                <span className="hero-title-line">
-                  TRANSFORME SEU <span className="premium-gradient-text">CORPO</span>
+                <span className="hero-line">
+                  TRANSFORME SEU <span className="highlight">CORPO</span>
                 </span>
-                <span className="hero-title-line">
-                  COM <span className="premium-gradient-text">ESTRATÉGIA</span>
+                <span className="hero-line">
+                  COM <span className="highlight">ESTRATÉGIA</span>
                 </span>
               </h1>
 
@@ -48,7 +47,7 @@ export default function Home() {
               </div>
 
               <div className="space-y-4 pt-4">
-                <Button size="lg" className="btn-premium h-16 px-12 text-xl font-headline italic rounded-full" asChild>
+                <Button size="lg" className="hero-cta btn-premium h-16 px-12 text-xl font-headline italic rounded-full" asChild>
                   <a href="#pricing">QUERO ENTRAR NA CONSULTORIA</a>
                 </Button>
                 <p className="text-xs text-muted-foreground/60 tracking-widest uppercase ml-4">
@@ -57,14 +56,14 @@ export default function Home() {
               </div>
             </div>
 
-            {/* EXPERT IMAGE - POSICIONADA À DIREITA */}
-            <div className="relative order-1 lg:order-2 flex justify-center lg:justify-end overflow-visible">
-              <div className="relative w-full max-w-[450px] lg:max-w-none lg:w-[110%] h-[350px] md:h-[500px] lg:h-[85vh] transition-transform duration-700 hover:scale-[1.01]">
+            {/* EXPERT IMAGE */}
+            <div className="hero-image-wrap relative order-1 lg:order-2 flex justify-center lg:justify-end">
+              <div className="relative w-full max-w-[450px] lg:max-w-none lg:w-[115%] h-[350px] md:h-[500px] lg:h-[90vh]">
                 <Image 
                   src={expertHero} 
                   alt="Robert Kirchmair" 
                   fill 
-                  className="object-contain object-bottom lg:object-right-bottom"
+                  className="hero-expert-image object-contain object-bottom lg:object-right-bottom"
                   priority
                 />
               </div>
@@ -151,7 +150,6 @@ export default function Home() {
           </div>
         </div>
         
-        {/* Marquee Track - Esteira Contínua */}
         <div className="w-full overflow-hidden py-10">
           <div className="marquee-results-track gap-6">
             {[...resultItems, ...resultItems].map((imgUrl, i) => (
@@ -172,7 +170,6 @@ export default function Home() {
       <section id="pricing" className="py-24 md:py-32 px-6 w-full">
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {/* COMBO PLAN */}
             <div className="card-premium glow-orange relative flex flex-col h-full border-primary/40">
               <div className="absolute -top-4 left-1/2 -translate-x-1/2">
                 <Badge className="bg-primary text-black font-headline px-6 py-1 italic tracking-widest text-sm uppercase">Mais Completo</Badge>
@@ -215,7 +212,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* DIET ONLY */}
             <div className="card-premium relative flex flex-col h-full border-white/10">
               <div className="mb-8">
                 <h3 className="font-headline text-3xl uppercase italic mb-2">Apenas Dieta</h3>
@@ -305,9 +301,9 @@ export default function Home() {
         <div className="container mx-auto text-center space-y-12">
           <div className="space-y-4">
             <p className="text-primary font-headline tracking-[0.2em] uppercase text-sm">Não espere o momento perfeito</p>
-            <h2 className="title-fluid max-w-5xl mx-auto">
-              Transforme seu corpo <br className="hidden md:block" />
-              com estratégia e <span className="premium-gradient-text">acompanhamento</span>.
+            <h2 className="hero-title text-center mx-auto" style={{ alignItems: 'center' }}>
+               <span className="hero-line" style={{ width: '100%', justifyContent: 'center', textAlign: 'center' }}>TRANSFORME SEU <span className="highlight">CORPO</span></span>
+               <span className="hero-line" style={{ width: '100%', justifyContent: 'center', textAlign: 'center' }}>COM <span className="highlight">ESTRATÉGIA</span></span>
             </h2>
           </div>
           
