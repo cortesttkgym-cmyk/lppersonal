@@ -7,7 +7,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Check, Flame, ShieldCheck } from 'lucide-react';
 import { Ticker } from '@/components/landing/Ticker';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
+import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import Autoplay from 'embla-carousel-autoplay';
 
@@ -16,17 +16,17 @@ export default function Home() {
   const bioImage = PlaceHolderImages.find(img => img.id === 'bio-personal');
   const results = ['result-1', 'result-2', 'result-3', 'result-4', 'result-5', 'result-6'].map(id => PlaceHolderImages.find(img => img.id === id));
 
-  // Autoplay real configurado para loop infinito e transição automática
+  // Configuração do Autoplay para ser 100% automático e fluido
   const autoplay = React.useRef(
     Autoplay({ 
-      delay: 3500, 
+      delay: 3000, 
       stopOnInteraction: false, 
       stopOnMouseEnter: true 
     })
   );
 
   return (
-    <main className="min-h-screen relative overflow-x-hidden w-full box-border">
+    <main className="min-h-screen relative overflow-x-hidden w-full box-border bg-black">
       {/* 1. HERO SECTION */}
       <section className="relative min-h-screen flex flex-col justify-center pt-20 px-6 md:px-12 overflow-hidden w-full">
         <div className="absolute top-0 right-0 w-full h-full z-0 opacity-40">
@@ -49,8 +49,8 @@ export default function Home() {
             </Badge>
             
             <h1 className="title-fluid">
-              Transforme seu corpo <br className="hidden md:block" />
-              com <span className="premium-gradient-text">estratégia</span>
+              TRANSFORME SEU CORPO <br className="hidden md:block" />
+              COM <span className="premium-gradient-text">ESTRATÉGIA</span>
             </h1>
 
             <p className="text-xl md:text-2xl text-muted-foreground max-w-xl leading-relaxed">
@@ -137,14 +137,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. RESULTS CAROUSEL (MANTIDO ACIMA DA OFERTA) */}
+      {/* 4. RESULTS CAROUSEL - AUTOMÁTICO E IMPACTANTE */}
       <section className="py-24 md:py-32 px-6 w-full results-section-gradient overflow-hidden">
         <div className="container mx-auto">
           <div className="text-center mb-16 space-y-4">
             <h2 className="font-headline text-4xl md:text-6xl uppercase italic leading-[0.9] tracking-tighter">
               CONFIRA ALGUNS <br />
-              <span className="premium-gradient-text">RESULTADOS REAIS</span> <br />
-              DOS NOSSOS ALUNOS
+              <span className="text-primary">RESULTADOS REAIS</span> <br />
+              DOS NOSSOS ALUNOS!
             </h2>
             <p className="text-muted-foreground italic tracking-wide uppercase text-sm max-w-2xl mx-auto">
               Evoluções conquistadas com estratégia, constância e acompanhamento individual.
@@ -152,17 +152,18 @@ export default function Home() {
           </div>
           
           <Carousel 
-            className="w-full max-w-6xl mx-auto"
+            className="w-full max-w-7xl mx-auto"
             plugins={[autoplay.current]}
             opts={{
               align: "start",
               loop: true,
+              skipSnaps: false,
             }}
           >
             <CarouselContent className="-ml-4">
               {results.map((res, i) => (
                 <CarouselItem key={i} className="pl-4 basis-full sm:basis-1/2 lg:basis-1/3">
-                  <div className="card-premium p-0 overflow-hidden group aspect-[3/4] relative border-primary/20 hover:border-primary/60 transition-all duration-500 shadow-2xl">
+                  <div className="card-premium p-0 overflow-hidden group aspect-[3/4] relative border-primary/20 hover:border-primary/60 transition-all duration-500 shadow-2xl rounded-2xl">
                     <Image 
                       src={res?.imageUrl || ""} 
                       alt={`Resultado ${i+1}`} 
@@ -170,16 +171,15 @@ export default function Home() {
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                       data-ai-hint="fitness transformation"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent opacity-80"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80"></div>
                     <div className="absolute bottom-6 left-6 z-10">
-                      <p className="font-headline italic uppercase text-lg text-white drop-shadow-lg bg-black/40 px-3 py-1 rounded-sm">Resultado 0{i+1}</p>
+                      <p className="font-headline italic uppercase text-lg text-white drop-shadow-lg bg-black/60 px-4 py-1 rounded-full border border-white/10">Resultado 0{i+1}</p>
                     </div>
                   </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="hidden xl:flex -left-16 bg-black/50 border-white/20 hover:bg-primary hover:text-black" />
-            <CarouselNext className="hidden xl:flex -right-16 bg-black/50 border-white/20 hover:bg-primary hover:text-black" />
+            {/* Setas removidas para focar no movimento automático conforme pedido */}
           </Carousel>
         </div>
       </section>
