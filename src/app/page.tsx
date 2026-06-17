@@ -19,7 +19,7 @@ export default function Home() {
       {/* 1. HERO SECTION */}
       <section className="hero-section relative min-h-[90vh] lg:min-h-screen flex items-center w-full bg-[#000000] py-12">
         <div className="container mx-auto px-5 md:px-12 relative z-10">
-          <div className="hero-inner grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
+          <div className="hero-inner relative">
             {/* TEXT CONTENT */}
             <div className="hero-content space-y-6 animate-in fade-in slide-in-from-left-8 duration-1000 order-2 lg:order-1">
               <div className="flex justify-center lg:justify-start">
