@@ -275,7 +275,7 @@
   pointer-events: none;
 }
 
-/* MOBILE RESULTS ADJUSTMENTS - REFINADO PARA CARDS MAIORES */
+/* MOBILE RESULTS ADJUSTMENTS - REFINADO PARA CARDS MAIORES (PEEK STYLE) */
 @media (max-width: 768px) {
   .results-section-gradient {
     padding-top: 52px !important;
@@ -338,9 +338,4 @@
   .results-card img {
     height: 240px !important;
   }
-}
-
-@keyframes scrollResults {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
 }
