@@ -10,54 +10,64 @@ import { Ticker } from '@/components/landing/Ticker';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export default function Home() {
-  const heroImage = PlaceHolderImages.find(img => img.id === 'hero-personal');
+  const expertHero = PlaceHolderImages.find(img => img.id === 'hero-expert');
   const bioImage = PlaceHolderImages.find(img => img.id === 'bio-personal');
   const results = ['result-1', 'result-2', 'result-3', 'result-4', 'result-5', 'result-6'].map(id => PlaceHolderImages.find(img => img.id === id));
 
   return (
     <main className="min-h-screen relative overflow-x-hidden w-full box-border bg-black">
       {/* 1. HERO SECTION */}
-      <section className="relative min-h-screen flex flex-col justify-center pt-20 px-6 md:px-12 overflow-hidden w-full">
-        <div className="absolute top-0 right-0 w-full h-full z-0 opacity-40">
-           <Image 
-            src={heroImage?.imageUrl || ""} 
-            alt="Robert Kirchmair Hero" 
-            fill 
-            className="object-cover object-right md:object-center grayscale brightness-50"
-            data-ai-hint="fitness trainer"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-transparent"></div>
-        </div>
+      <section className="relative min-h-screen flex items-center px-6 md:px-12 overflow-hidden w-full">
+        {/* Glow behind expert */}
+        <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[60%] h-[60%] bg-primary/10 blur-[120px] rounded-full z-0 hidden lg:block"></div>
+        
+        <div className="container mx-auto relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* TEXT CONTENT */}
+            <div className="space-y-8 animate-in fade-in slide-in-from-left-8 duration-1000 max-w-full order-2 lg:order-1">
+              <Badge variant="outline" className="border-primary text-primary font-headline px-4 py-1 tracking-widest text-xs uppercase animate-pulse">
+                Consultoria Premium Robert Kirchmair
+              </Badge>
+              
+              <h1 className="title-fluid">
+                TRANSFORME SEU CORPO <br className="hidden md:block" />
+                COM <span className="premium-gradient-text">ESTRATÉGIA</span>
+              </h1>
 
-        <div className="container mx-auto relative z-10 grid lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-8 animate-in fade-in slide-in-from-left-8 duration-1000 max-w-full">
-            <Badge variant="outline" className="border-primary text-primary font-headline px-4 py-1 tracking-widest text-xs uppercase animate-pulse">
-              Consultoria Premium Robert Kirchmair
-            </Badge>
-            
-            <h1 className="title-fluid">
-              TRANSFORME SEU CORPO <br className="hidden md:block" />
-              COM <span className="premium-gradient-text">ESTRATÉGIA</span>
-            </h1>
+              <p className="text-xl md:text-2xl text-muted-foreground max-w-xl leading-relaxed">
+                Acompanhamento individual para quem quer sair do achismo, treinar com direção e evoluir com um plano feito para sua rotina.
+              </p>
 
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-xl leading-relaxed">
-              Acompanhamento individual para quem quer sair do achismo, treinar com direção e evoluir com um plano feito para sua rotina.
-            </p>
+              <div className="flex items-center gap-3 bg-secondary/10 border border-secondary/20 p-4 rounded-xl max-w-lg backdrop-blur-sm">
+                <Flame className="text-primary fill-primary animate-bounce shrink-0" />
+                <p className="text-sm font-semibold italic">Método personalizado para resultados consistentes, com treino, dieta e suporte constante.</p>
+              </div>
 
-            <div className="flex items-center gap-3 bg-secondary/10 border border-secondary/20 p-4 rounded-xl max-w-lg backdrop-blur-sm">
-              <Flame className="text-primary fill-primary animate-bounce shrink-0" />
-              <p className="text-sm font-semibold italic">Método personalizado para resultados consistentes, com treino, dieta e suporte constante.</p>
+              <div className="space-y-4">
+                <Button size="lg" className="btn-premium h-16 px-12 text-xl font-headline italic rounded-full" asChild>
+                  <a href="#pricing">QUERO ENTRAR NA CONSULTORIA</a>
+                </Button>
+                <p className="text-xs text-muted-foreground/60 tracking-widest uppercase ml-4">
+                  Vagas limitadas para acompanhamento individual
+                </p>
+              </div>
             </div>
 
-            <div className="space-y-4">
-              <Button size="lg" className="btn-premium h-16 px-12 text-xl font-headline italic rounded-full" asChild>
-                <a href="#pricing">QUERO ENTRAR NA CONSULTORIA</a>
-              </Button>
-              <p className="text-xs text-muted-foreground/60 tracking-widest uppercase ml-4">
-                Vagas limitadas para acompanhamento individual
-              </p>
+            {/* EXPERT IMAGE */}
+            <div className="relative order-1 lg:order-2 flex justify-center lg:justify-end">
+              <div className="relative w-full max-w-[500px] lg:max-w-none lg:w-[120%] h-[400px] md:h-[600px] lg:h-[85vh] transition-transform duration-700 hover:scale-[1.02]">
+                {/* Glow directly behind the expert image on mobile/all */}
+                <div className="absolute inset-0 bg-primary/5 blur-[80px] rounded-full lg:hidden"></div>
+                
+                <Image 
+                  src={expertHero?.imageUrl || ""} 
+                  alt="Robert Kirchmair" 
+                  fill 
+                  className="object-contain object-bottom lg:object-right-bottom"
+                  data-ai-hint="fitness trainer expert"
+                  priority
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -144,7 +154,6 @@ export default function Home() {
         {/* Marquee Track */}
         <div className="w-full overflow-hidden py-10">
           <div className="marquee-results-track gap-6">
-            {/* Renderiza os resultados duas vezes para loop infinito sem cortes */}
             {[...results, ...results].map((res, i) => (
               <div key={i} className="flex-shrink-0 w-[300px] md:w-[400px] aspect-[3/4] relative card-premium p-0 overflow-hidden border-primary/20 hover:border-primary/60 transition-all duration-500 shadow-2xl rounded-2xl">
                 <Image 
