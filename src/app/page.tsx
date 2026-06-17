@@ -5,7 +5,6 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Check, Flame, ArrowRight, ShieldCheck, Trophy, Target, Star, Play } from 'lucide-react';
 import { Ticker } from '@/components/landing/Ticker';
-import { AIStrategyForm } from '@/components/landing/AIStrategyForm';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
@@ -16,11 +15,6 @@ export default function Home() {
 
   return (
     <main className="min-h-screen relative overflow-x-hidden">
-      {/* Background Grid/Noise */}
-      <div className="fixed inset-0 z-[-1] opacity-20 pointer-events-none" 
-           style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}>
-      </div>
-
       {/* HERO SECTION */}
       <section className="relative min-h-screen flex flex-col justify-center pt-20 px-6 overflow-hidden">
         <div className="absolute top-0 right-0 w-full h-full z-0 opacity-40">
@@ -49,7 +43,7 @@ export default function Home() {
               Acompanhamento individual para quem quer sair do achismo, treinar com direção e evoluir com um plano feito para sua rotina, objetivo e nível atual.
             </p>
 
-            <div className="flex items-center gap-3 bg-secondary/20 border border-secondary/30 p-4 rounded-xl max-w-lg">
+            <div className="flex items-center gap-3 bg-secondary/10 border border-secondary/20 p-4 rounded-xl max-w-lg backdrop-blur-sm">
               <Flame className="text-primary fill-primary animate-bounce shrink-0" />
               <p className="text-sm font-semibold italic">Método personalizado para resultados consistentes, com treino, dieta e suporte durante a sua evolução.</p>
             </div>
@@ -63,13 +57,6 @@ export default function Home() {
               </p>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* AI INTAKE / STRATEGY */}
-      <section className="py-24 bg-black/40 relative">
-        <div className="container mx-auto px-6">
-          <AIStrategyForm />
         </div>
       </section>
 
@@ -137,7 +124,7 @@ export default function Home() {
       </section>
 
       {/* PRICING PLANS */}
-      <section id="pricing" className="py-32 bg-black/40">
+      <section id="pricing" className="py-32">
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {/* COMBO PLAN */}
@@ -215,7 +202,7 @@ export default function Home() {
       </section>
 
       {/* RESULTS CAROUSEL */}
-      <section className="py-32 bg-gradient-to-b from-black to-[#200a30]">
+      <section className="py-32">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="font-headline text-4xl md:text-5xl uppercase italic mb-4">Confira Alguns Resultados</h2>
@@ -291,7 +278,7 @@ export default function Home() {
       </section>
 
       {/* GUARANTEE */}
-      <section className="py-32 bg-black">
+      <section className="py-32">
         <div className="container mx-auto px-6 text-center">
           <div className="inline-block relative mb-12">
             <div className="text-[12rem] font-headline font-bold text-accent/10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none">7</div>
@@ -305,7 +292,7 @@ export default function Home() {
       </section>
 
       {/* FINAL CTA */}
-      <section className="py-32 bg-gradient-to-t from-black via-[#1a0525] to-black">
+      <section className="py-32 bg-gradient-to-t from-black via-black/80 to-black">
         <div className="container mx-auto px-6 text-center space-y-12">
           <div className="space-y-4">
             <p className="text-primary font-headline tracking-[0.2em] uppercase text-sm">Não espere o momento perfeito</p>
