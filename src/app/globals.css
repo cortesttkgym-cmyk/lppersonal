@@ -276,6 +276,11 @@
 }
 
 @media (max-width: 768px) {
+  .marquee-results-track {
+    animation-duration: 25s;
+    gap: 16px;
+  }
+  
   .plan-card {
     padding: 24px 20px !important;
   }
