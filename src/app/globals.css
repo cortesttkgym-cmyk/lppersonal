@@ -38,7 +38,7 @@
   }
 }
 
-/* HEADLINE HERO - CORREÇÃO DEFINITIVA */
+/* HEADLINE HERO - ESTRUTURA FIXA E PROTEGIDA */
 .hero-title {
   display: flex;
   flex-direction: column;
@@ -97,6 +97,22 @@
   overflow: visible !important;
 }
 
+/* EXPERT IMAGE - AJUSTE DE TAMANHO E POSICIONAMENTO */
+.hero-image-wrap {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: visible;
+  position: relative;
+}
+
+.hero-expert-image {
+  object-fit: contain;
+  object-position: center bottom !important;
+  transform: scale(1.18);
+  transform-origin: center bottom;
+}
+
 @media (max-width: 768px) {
   .hero-section {
     padding: 28px 18px 40px !important;
@@ -106,15 +122,22 @@
     order: -1;
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: center !important;
+    align-items: center;
     overflow: visible;
+    margin: 0 auto;
+    text-align: center;
   }
 
   .hero-expert-image {
-    max-height: 340px;
+    display: block;
     width: auto;
-    max-width: 90%;
+    max-width: 88% !important;
+    max-height: 340px !important;
+    margin: 0 auto;
     object-fit: contain;
+    object-position: center center !important;
+    transform: none !important;
   }
 
   .hero-content {
