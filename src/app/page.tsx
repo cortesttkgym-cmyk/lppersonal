@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -17,14 +16,19 @@ export default function Home() {
   const bioImage = PlaceHolderImages.find(img => img.id === 'bio-personal');
   const results = ['result-1', 'result-2', 'result-3', 'result-4', 'result-5', 'result-6'].map(id => PlaceHolderImages.find(img => img.id === id));
 
-  const autoplayPlugin = React.useRef(
-    Autoplay({ delay: 3000, stopOnInteraction: true })
+  // Autoplay real configurado para loop infinito e transição automática
+  const autoplay = React.useRef(
+    Autoplay({ 
+      delay: 3500, 
+      stopOnInteraction: false, 
+      stopOnMouseEnter: true 
+    })
   );
 
   return (
     <main className="min-h-screen relative overflow-x-hidden w-full box-border">
       {/* 1. HERO SECTION */}
-      <section className="relative min-h-screen flex flex-col justify-center pt-20 px-4 md:px-6 overflow-hidden w-full">
+      <section className="relative min-h-screen flex flex-col justify-center pt-20 px-6 md:px-12 overflow-hidden w-full">
         <div className="absolute top-0 right-0 w-full h-full z-0 opacity-40">
            <Image 
             src={heroImage?.imageUrl || ""} 
@@ -35,7 +39,7 @@ export default function Home() {
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-transparent"></div>
         </div>
 
         <div className="container mx-auto relative z-10 grid lg:grid-cols-2 gap-12 items-center">
@@ -45,16 +49,17 @@ export default function Home() {
             </Badge>
             
             <h1 className="title-fluid">
-              Transforme seu <span className="premium-gradient-text">corpo</span> com estratégia
+              Transforme seu corpo <br className="hidden md:block" />
+              com <span className="premium-gradient-text">estratégia</span>
             </h1>
 
             <p className="text-xl md:text-2xl text-muted-foreground max-w-xl leading-relaxed">
-              Acompanhamento individual para quem quer sair do achismo, treinar com direção e evoluir com um plano feito para sua rotina, objetivo e nível atual.
+              Acompanhamento individual para quem quer sair do achismo, treinar com direção e evoluir com um plano feito para sua rotina.
             </p>
 
             <div className="flex items-center gap-3 bg-secondary/10 border border-secondary/20 p-4 rounded-xl max-w-lg backdrop-blur-sm">
               <Flame className="text-primary fill-primary animate-bounce shrink-0" />
-              <p className="text-sm font-semibold italic">Método personalizado para resultados consistentes, com treino, dieta e suporte durante a sua evolução.</p>
+              <p className="text-sm font-semibold italic">Método personalizado para resultados consistentes, com treino, dieta e suporte constante.</p>
             </div>
 
             <div className="space-y-4">
@@ -69,8 +74,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. HOW IT WORKS (Como funciona) */}
-      <section className="py-24 md:py-32 relative px-4 md:px-6 w-full">
+      {/* 2. HOW IT WORKS */}
+      <section className="py-24 md:py-32 relative px-6 w-full">
         <div className="container mx-auto">
           <div className="text-center mb-16 space-y-4">
             <h2 className="text-primary font-headline text-sm tracking-[0.3em] uppercase font-bold">
@@ -110,8 +115,8 @@ export default function Home() {
 
       <Ticker />
 
-      {/* 3. HOW TO START (Como começar) */}
-      <section className="py-24 px-4 md:px-6 w-full">
+      {/* 3. HOW TO START */}
+      <section className="py-24 px-6 w-full">
         <div className="container mx-auto text-center">
           <h2 className="font-headline text-4xl md:text-5xl uppercase italic mb-16">Como Começar</h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 gap-8 max-w-5xl mx-auto">
@@ -132,23 +137,23 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. RESULTS CAROUSEL (Resultados dos alunos - MOVIDO PARA CIMA) */}
-      <section className="py-24 md:py-32 px-4 md:px-6 w-full bg-gradient-to-b from-black via-[#1a0a0a]/40 to-black">
+      {/* 4. RESULTS CAROUSEL (MANTIDO ACIMA DA OFERTA) */}
+      <section className="py-24 md:py-32 px-6 w-full results-section-gradient overflow-hidden">
         <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="font-headline text-4xl md:text-5xl uppercase italic mb-4">
-              CONFIRA ALGUNS <span className="premium-gradient-text">RESULTADOS</span> DE ALUNOS
+          <div className="text-center mb-16 space-y-4">
+            <h2 className="font-headline text-4xl md:text-6xl uppercase italic leading-[0.9] tracking-tighter">
+              CONFIRA ALGUNS <br />
+              <span className="premium-gradient-text">RESULTADOS REAIS</span> <br />
+              DOS NOSSOS ALUNOS
             </h2>
             <p className="text-muted-foreground italic tracking-wide uppercase text-sm max-w-2xl mx-auto">
-              Evoluções reais conquistadas com estratégia, constância e acompanhamento.
+              Evoluções conquistadas com estratégia, constância e acompanhamento individual.
             </p>
           </div>
           
           <Carousel 
             className="w-full max-w-6xl mx-auto"
-            plugins={[autoplayPlugin.current]}
-            onMouseEnter={autoplayPlugin.current.stop}
-            onMouseLeave={autoplayPlugin.current.reset}
+            plugins={[autoplay.current]}
             opts={{
               align: "start",
               loop: true,
@@ -157,7 +162,7 @@ export default function Home() {
             <CarouselContent className="-ml-4">
               {results.map((res, i) => (
                 <CarouselItem key={i} className="pl-4 basis-full sm:basis-1/2 lg:basis-1/3">
-                  <div className="card-premium p-0 overflow-hidden group aspect-[3/4] relative border-primary/10 hover:border-primary/40 transition-all duration-500">
+                  <div className="card-premium p-0 overflow-hidden group aspect-[3/4] relative border-primary/20 hover:border-primary/60 transition-all duration-500 shadow-2xl">
                     <Image 
                       src={res?.imageUrl || ""} 
                       alt={`Resultado ${i+1}`} 
@@ -165,22 +170,22 @@ export default function Home() {
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                       data-ai-hint="fitness transformation"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-60"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent opacity-80"></div>
                     <div className="absolute bottom-6 left-6 z-10">
-                      <p className="font-headline italic uppercase text-lg text-white shadow-sm">Resultado 0{i+1}</p>
+                      <p className="font-headline italic uppercase text-lg text-white drop-shadow-lg bg-black/40 px-3 py-1 rounded-sm">Resultado 0{i+1}</p>
                     </div>
                   </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="hidden xl:flex bg-black/50 border-white/20 hover:bg-primary hover:text-black" />
-            <CarouselNext className="hidden xl:flex bg-black/50 border-white/20 hover:bg-primary hover:text-black" />
+            <CarouselPrevious className="hidden xl:flex -left-16 bg-black/50 border-white/20 hover:bg-primary hover:text-black" />
+            <CarouselNext className="hidden xl:flex -right-16 bg-black/50 border-white/20 hover:bg-primary hover:text-black" />
           </Carousel>
         </div>
       </section>
 
-      {/* 5. PRICING PLANS (Oferta / Planos) */}
-      <section id="pricing" className="py-24 md:py-32 px-4 md:px-6 w-full">
+      {/* 5. PRICING PLANS */}
+      <section id="pricing" className="py-24 md:py-32 px-6 w-full">
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {/* COMBO PLAN */}
@@ -190,7 +195,7 @@ export default function Home() {
               </div>
               <div className="mb-8">
                 <h3 className="font-headline text-3xl uppercase italic mb-2">Combo Treino + Dieta</h3>
-                <p className="text-muted-foreground text-sm">O acompanhamento completo para quem quer transformar o corpo com treino, alimentação e direção.</p>
+                <p className="text-muted-foreground text-sm">O acompanhamento completo para quem quer transformar o corpo com estratégia total.</p>
               </div>
               <ul className="space-y-4 mb-12 flex-grow">
                 {[
@@ -230,7 +235,7 @@ export default function Home() {
             <div className="card-premium relative flex flex-col h-full border-white/10">
               <div className="mb-8">
                 <h3 className="font-headline text-3xl uppercase italic mb-2">Apenas Dieta</h3>
-                <p className="text-muted-foreground text-sm">Para quem já treina, mas precisa de uma alimentação estratégica para evoluir com mais clareza.</p>
+                <p className="text-muted-foreground text-sm">Para quem já treina, mas precisa de uma alimentação estratégica para evoluir com clareza.</p>
               </div>
               <ul className="space-y-4 mb-12 flex-grow">
                 {[
@@ -257,17 +262,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 6. BIO SECTION (Quem é Robert Kirchmair) */}
-      <section className="py-24 md:py-32 relative overflow-hidden px-4 md:px-6 w-full">
+      {/* 6. BIO SECTION */}
+      <section className="py-24 md:py-32 relative overflow-hidden px-6 w-full">
         <div className="container mx-auto relative z-10 grid md:grid-cols-2 gap-16 items-center">
           <div className="space-y-8">
             <h2 className="font-headline text-4xl md:text-6xl uppercase italic leading-none">
-              Quem é <span className="text-primary">Robert Kirchmair</span>?
+              Quem é <br className="md:hidden" /> <span className="text-primary">Robert Kirchmair</span>?
             </h2>
             <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
               <p>Robert Kirchmair é personal trainer e especialista em transformação corporal, ajudando alunos a treinarem com mais estratégia, clareza e consistência.</p>
               <p>Com uma metodologia baseada em treino personalizado, alimentação direcionada e acompanhamento individual, Robert desenvolve planos adaptados à realidade de cada aluno.</p>
-              <p>Seu foco é simples: tirar o aluno do improviso e entregar um caminho claro para evolução física, estética e de performance.</p>
             </div>
             <div className="grid grid-cols-2 gap-4">
               {[
@@ -284,7 +288,7 @@ export default function Home() {
             </div>
           </div>
           <div className="relative group">
-            <div className="absolute -inset-4 bg-gradient-to-tr from-secondary/40 to-primary/20 blur-3xl rounded-full opacity-50 group-hover:opacity-80 transition-opacity"></div>
+            <div className="absolute -inset-4 bg-gradient-to-tr from-secondary/40 to-primary/20 blur-3xl rounded-full opacity-30 group-hover:opacity-50 transition-opacity"></div>
             <div className="relative rounded-2xl overflow-hidden aspect-[4/5] border border-white/10 shadow-2xl">
               <Image 
                 src={bioImage?.imageUrl || ""} 
@@ -299,8 +303,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 7. GUARANTEE (Garantia) */}
-      <section className="py-24 md:py-32 px-4 md:px-6 w-full">
+      {/* 7. GUARANTEE */}
+      <section className="py-24 md:py-32 px-6 w-full">
         <div className="container mx-auto text-center">
           <div className="inline-block relative mb-12">
             <div className="text-[8rem] md:text-[12rem] font-headline font-bold text-accent/10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none">7</div>
@@ -308,18 +312,19 @@ export default function Home() {
           </div>
           <h2 className="font-headline text-3xl uppercase italic mb-4">Garantia de 7 Dias</h2>
           <p className="text-muted-foreground max-w-xl mx-auto text-lg">
-            Você terá 7 dias para conhecer a consultoria. Se perceber que não é para você, basta solicitar o cancelamento dentro do prazo sem burocracia. Sua segurança em primeiro lugar.
+            Você terá 7 dias para conhecer a consultoria. Se perceber que não é para você, basta solicitar o cancelamento dentro do prazo sem burocracia.
           </p>
         </div>
       </section>
 
       {/* 8. FINAL CTA */}
-      <section className="py-24 md:py-32 px-4 md:px-6 w-full">
+      <section className="py-24 md:py-32 px-6 w-full">
         <div className="container mx-auto text-center space-y-12">
           <div className="space-y-4">
             <p className="text-primary font-headline tracking-[0.2em] uppercase text-sm">Não espere o momento perfeito</p>
             <h2 className="title-fluid max-w-5xl mx-auto">
-              Transforme seu corpo com estratégia e <span className="premium-gradient-text">acompanhamento</span>.
+              Transforme seu corpo <br className="hidden md:block" />
+              com estratégia e <span className="premium-gradient-text">acompanhamento</span>.
             </h2>
           </div>
           
@@ -333,7 +338,7 @@ export default function Home() {
       </section>
 
       {/* FOOTER */}
-      <footer className="py-12 border-t border-white/5 bg-black/80 px-4 md:px-6 w-full">
+      <footer className="py-12 border-t border-white/5 bg-black/80 px-6 w-full">
         <div className="container mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="text-center md:text-left">
             <h3 className="font-headline text-xl uppercase italic tracking-widest">Apex Kirchmair</h3>

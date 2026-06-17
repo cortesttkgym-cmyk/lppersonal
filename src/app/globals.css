@@ -33,29 +33,18 @@
     box-sizing: border-box;
   }
   body {
-    @apply bg-black text-foreground font-body antialiased overflow-x-hidden;
+    @apply bg-black text-foreground font-body antialiased overflow-x-hidden w-full;
     background-color: #000;
-    /* Efeito de fagulhas/brasa sutis */
+    /* Fundo premium limpo com iluminação radial sutil e controlada */
     background-image: 
-      radial-gradient(1px 1px at 10% 15%, #ff8a00 100%, transparent),
-      radial-gradient(1.2px 1.2px at 25% 45%, #741b1b 100%, transparent),
-      radial-gradient(1px 1px at 40% 85%, #d69a1f 100%, transparent),
-      radial-gradient(1.5px 1.5px at 65% 35%, #ff4d00 100%, transparent),
-      radial-gradient(1px 1px at 80% 10%, #741b1b 100%, transparent),
-      radial-gradient(1.2px 1.2px at 90% 70%, #ff8a00 100%, transparent),
-      radial-gradient(1px 1px at 15% 90%, #d69a1f 100%, transparent),
-      radial-gradient(1.5px 1.5px at 45% 10%, #ff4d00 100%, transparent),
-      radial-gradient(1px 1px at 75% 60%, #741b1b 100%, transparent),
-      radial-gradient(1px 1px at 55% 95%, #ff8a00 100%, transparent),
-      radial-gradient(1.2px 1.2px at 5% 50%, #d69a1f 100%, transparent),
-      radial-gradient(1px 1px at 95% 5%, #ff4d00 100%, transparent);
+      radial-gradient(circle at 20% 30%, rgba(255, 138, 0, 0.05) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(116, 27, 27, 0.05) 0%, transparent 40%);
     background-attachment: fixed;
-    background-size: cover;
   }
 }
 
 .title-fluid {
-  font-size: clamp(2rem, 7vw, 6.5rem);
+  font-size: clamp(2.2rem, 8vw, 6rem);
   line-height: 0.95;
   max-width: 100%;
   overflow-wrap: break-word;
@@ -94,4 +83,18 @@
 
 .glow-red {
   box-shadow: 0 0 50px -10px rgba(116, 27, 27, 0.2);
+}
+
+/* Seção de Resultados - Estética Roxo/Vinho */
+.results-section-gradient {
+  background: linear-gradient(180deg, #000 0%, #1a0a2e 30%, #2a0a1a 70%, #000 100%);
+  position: relative;
+}
+
+.results-section-gradient::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(147, 51, 234, 0.1) 0%, transparent 70%);
+  pointer-events: none;
 }
