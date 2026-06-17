@@ -1,3 +1,40 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero-personal",
+      "description": "Professional fitness trainer Robert Kirchmair",
+      "imageUrl": "https://picsum.photos/seed/fitness1/800/1000",
+      "imageHint": "fitness trainer"
+    },
+    {
+      "id": "gym-background",
+      "description": "Dark moody gym background",
+      "imageUrl": "https://picsum.photos/seed/gym1/1920/1080",
+      "imageHint": "dark gym"
+    },
+    {
+      "id": "result-1",
+      "description": "Fitness transformation 1",
+      "imageUrl": "https://picsum.photos/seed/trans1/400/600",
+      "imageHint": "fitness transformation"
+    },
+    {
+      "id": "result-2",
+      "description": "Fitness transformation 2",
+      "imageUrl": "https://picsum.photos/seed/trans2/400/600",
+      "imageHint": "body transformation"
+    },
+    {
+      "id": "result-3",
+      "description": "Fitness transformation 3",
+      "imageUrl": "https://picsum.photos/seed/trans3/400/600",
+      "imageHint": "weight loss transformation"
+    },
+    {
+      "id": "bio-personal",
+      "description": "Robert Kirchmair presenting his expertise",
+      "imageUrl": "https://picsum.photos/seed/expert/800/1000",
+      "imageHint": "personal trainer"
+    }
+  ]
 }
